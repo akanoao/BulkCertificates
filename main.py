@@ -10,19 +10,20 @@ from email.mime.text import MIMEText
 from email.mime.application import MIMEApplication
 import io  # Import io for PDF handling
 import base64
+import os
 
 
 # Your client_id and client_secret from Streamlit secrets
-CLIENT_ID = st.secrets["GOOGLE_AUTH_CLIENT_ID"]
-CLIENT_SECRET = st.secrets["GOOGLE_AUTH_CLIENT_SECRET"]
-REDIRECT_URI = st.secrets["REDIRECT_URI"]
-GOOGLE_PROJECT_ID = st.secrets["GOOGLE_PROJECT_ID"]
-GOOGLE_PRIVATE_KEY_ID = st.secrets["GOOGLE_PRIVATE_KEY_ID"]
-GOOGLE_PRIVATE_KEY = st.secrets["GOOGLE_PRIVATE_KEY"].replace('\\n', '\n')
-GOOGLE_CLIENT_EMAIL = st.secrets["GOOGLE_CLIENT_EMAIL"]
-GOOGLE_CLIENT_ID = st.secrets["GOOGLE_CLIENT_ID"]
-EMAIL_ADDRESS = st.secrets["EMAIL_ADDRESS"]
-EMAIL_PASSWORD = st.secrets["EMAIL_PASSWORD"]
+CLIENT_ID = os.environ["GOOGLE_AUTH_CLIENT_ID"]
+CLIENT_SECRET = os.environ["GOOGLE_AUTH_CLIENT_SECRET"]
+REDIRECT_URI = os.environ["REDIRECT_URI"]
+GOOGLE_PROJECT_ID = os.environ["GOOGLE_PROJECT_ID"]
+GOOGLE_PRIVATE_KEY_ID = os.environ["GOOGLE_PRIVATE_KEY_ID"]
+GOOGLE_PRIVATE_KEY = os.environ["GOOGLE_PRIVATE_KEY"].replace('\\n', '\n')
+GOOGLE_CLIENT_EMAIL = os.environ["GOOGLE_CLIENT_EMAIL"]
+GOOGLE_CLIENT_ID = os.environ["GOOGLE_CLIENT_ID"]
+EMAIL_ADDRESS = os.environ["EMAIL_ADDRESS"]
+EMAIL_PASSWORD = os.environ["EMAIL_PASSWORD"]
 
 # Function to check if the user is in the allowed domain
 def is_user_in_domain(email):

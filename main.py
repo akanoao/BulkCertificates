@@ -133,7 +133,7 @@ else:
                 for index, row in sheet_data.iterrows():
                     full_name = row['Full Name']
                     email = row['Email']
-                    body = body.replace("{Full_Name}", full_name)
+                    email_body = body.replace("{Full_Name}", full_name)
                     if pd.notna(full_name) and pd.notna(email):
                         # Create a copy of the presentation
                         presentation_copy = drive_service.files().copy(
@@ -164,7 +164,7 @@ else:
                         ).execute()
 
                         # Send email with the attached PDF
-                        send_email(full_name, email, pdf_blob, subject, body)
+                        send_email(full_name, email, pdf_blob, subject, email_body)
 
                         # Delete the copied presentation
                         drive_service.files().delete(fileId=copied_presentation_id).execute()
